@@ -8,6 +8,20 @@
       "when": 1753802347750,
       "tag": "0000_tidy_warlock",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1754352247589,
+      "tag": "0001_curious_loki",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1754360079172,
+      "tag": "0002_large_nemesis",
+      "breakpoints": true
     }
   ]
 }

@@ -1,16 +1,19 @@
 import React from 'react'
-import { Button } from '@/components/ui/button'
 import HistoryList from './_components/HistoryList'
+import DoctorsAgentList from './_components/DoctorsAgentList'
+import AddNewSessionDialog from './_components/AddNewSessionDialog'
 
+// Dashboard component that renders the history list and doctors agent list
 function Dashboard() {
   return (
     <div>
       <div className='flex justify-between items-center'>
         <h2 className='font-bold text-2xl'>My Dashboard</h2>
-        <Button>+Consult with Doctor</Button>
+        <AddNewSessionDialog />
       </div>
-      HistoryList
-      </div>
+      <HistoryList />
+      <DoctorsAgentList />
+    </div>
   )
 }
 
