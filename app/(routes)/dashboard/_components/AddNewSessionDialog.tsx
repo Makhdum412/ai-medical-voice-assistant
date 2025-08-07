@@ -18,13 +18,15 @@ import DoctorAgentCard, { doctorAgent } from './DoctorAgentCard'
 import { index } from 'drizzle-orm/gel-core'
 import SuggestedDoctorCard from './SuggestedDoctorCard'
 import { SessionChatTable } from '@/config/schema'
-
+import { useRouter } from 'next/navigation'
 // Component for adding a new session dialog
 function AddNewSessionDialog() {
   const [note, setNote] = useState<string>();
   const[loading, setLoading] = useState(false);
   const[suggestedDoctors, setSuggestedDoctors] = useState<doctorAgent[]>();
   const [selectedDoctor, setSelectedDoctor] = useState<doctorAgent>();
+ const router= useRouter();
+  
   const onClickNext = async () => {
     setLoading(true);
     const result = await axios.post('/api/suggest-doctors', {
@@ -42,9 +44,12 @@ function AddNewSessionDialog() {
         selectedDoctor: selectedDoctor,
       });
       console.log(result.data);
-      if(result.data?.sessionID) {
-         console.log('Session ID:', result.data.sessionID);
-      }
+      if(result.data?.sessionId) {
+         console.log('Session ID:', result.data.sessionId);
+         router.push('/dashboard/medical-agent/'+result.data.sessionId);
+      }else {
+  console.error('Session ID not found in API response');
+}
       setLoading(false);
   }
 
